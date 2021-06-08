@@ -82,6 +82,12 @@ async def youtube_dl_call_back(bot, update):
             youtube_dl_url = youtube_dl_url.strip()
         if custom_file_name is not None:
             custom_file_name = custom_file_name.strip()
+            if len(custom_file_name) > 73:
+                await bot.edit_message_text(
+                    text="Your custom filename are more than 73 characters.",
+                    chat_id=update.message.chat.id,
+                    message_id=update.message.message_id
+                )
         # https://stackoverflow.com/a/761825/4723940
         if youtube_dl_username is not None:
             youtube_dl_username = youtube_dl_username.strip()
